@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker | Victor</title>
+    <link rel="stylesheet" href="tracker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Application Tracker</h1>
+            <div>
+                <button onclick="openModal()" class="btn btn-primary">+ Add Job</button>
+                <button onclick="exportData()" class="btn btn-outline">Export Data</button>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Applied</h3>
+                <div class="number" id="totalApplied">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Interviews</h3>
+                <div class="number" id="interviews">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Response Rate</h3>
+                <div class="number" id="responseRate">0%</div>
+            </div>
+        </div>
+
+        <div class="job-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Date Applied</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="jobTableBody">
+                    <!-- Jobs will be inserted here by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Job Modal -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 1.5rem; color: var(--accent-color);">Log New Application</h2>
+            <form id="jobForm">
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" id="company" required placeholder="e.g. Google">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" id="role" required placeholder="e.g. SDR">
+                </div>
+                <div class="form-group">
+                    <label>Date Applied</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="status">
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Offer">Offer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Link (Optional)</label>
+                    <input type="url" id="link" placeholder="https://...">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()" class="btn btn-outline"
+                        style="border:none;">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+
+</html>
